@@ -1,0 +1,38 @@
+import string
+import time
+special_characters = string.punctuation
+password = input("enter password: ")
+def check_length():
+    global password
+    while True:
+        if len(password) <= 12:
+            print("Password is too short, try again")
+            password = input("enter password: ")
+
+        elif len(password) > 20:
+            print("Password length too long, you would probably forget")
+            password = input("enter password: ")
+
+        else:
+            break
+check_length()
+print(f"Password length is {len(password)}, exceptional length")
+
+
+def check_special_characters(): # function for checking special characters
+    global password
+    num_of_special_characters = 0 # static value for counting number of special characters
+    while True:
+        for letter in password: # for loop for checking every letter in the password
+            if letter in special_characters:
+                num_of_special_characters += 1 # if the letter is a special character then add 1 to the static variable for counting special characters
+        if num_of_special_characters >= 2: # if more than 2 special characters are in the password then break the while loop
+            print("Password has more than 2 special characters")
+            break
+        else: # if there arent any special characters then redo making the password and redo the check length and special characters functions until the requirements are met
+            print("Password has none or less than 2 special characters, try again")
+            password = input("enter password: ")
+            check_length()
+            check_special_characters()
+check_special_characters() # calling function
+
