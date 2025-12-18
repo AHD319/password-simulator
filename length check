@@ -1,0 +1,19 @@
+import string #string module to be able to get special character
+import time
+special_characters = string.punctuation
+password = input("enter password: ")
+def check_length():
+    global password # for functions because normally its local
+    while True:
+        if len(password) <= 12: # if less than 12 letters
+            print("Password is too short, try again")
+            password = input("enter password: ")
+
+        elif len(password) > 20: # if more than 20 letters
+            print("Password length too long, you would probably forget")
+            password = input("enter password: ")
+
+        else:
+            break # breaking the infinite loop when requirements are met (between 12 and 20 letters)
+check_length() # starting the function
+print(f"Password length is {len(password)}, exceptional length")
