@@ -1,0 +1,37 @@
+import string
+import time
+special_characters = string.punctuation
+password = input("enter password: ")
+def check_length():
+    global password
+    while True:
+        if len(password) <= 12:
+            print("Password is too short, try again")
+            password = input("enter password: ")
+
+        elif len(password) > 20:
+            print("Password length too long, you would probably forget ❌")
+            password = input("enter password: ")
+
+        else:
+            print(f"Password length is {len(password)}, exceptional length ✅")
+            break
+
+
+def check_letters():
+    letter_count = 0
+    global password
+    while True:
+        for letter in password:
+            if letter.isalpha(): # part of the string module to be able to see if each letter of the password is part of the ALPHAbet
+                letter_count += 1 #counting each time there is a letter
+
+        if letter_count >= 2: # using the letter count to determine whether the passwrod needs more
+            print("Password has more than 2 letters ✅")
+            break
+
+        else:
+            print("Password has none or less than 2 letters, try again ❌")
+            password = input("enter password: ")
+            check_length()
+            check_letters()
